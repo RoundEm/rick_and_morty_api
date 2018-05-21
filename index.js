@@ -3,7 +3,7 @@
 const RICK_AND_MORTY_CHARACTER_URL = 'https://rickandmortyapi.com/api/character'
 let dataStore
 let characters
-let currentPageNumber
+let currentPageNumber = 0
 const htmlBody = document.getElementById('content')
 let prevButton = document.getElementById('previous')
 let nextButton = document.getElementById('next')
@@ -37,7 +37,7 @@ function handleData() {
 }
 
 function renderData(data) {
-    return characters.map(character => {
+    characters.map(character => {
         htmlBody.innerHTML += 
             `<div>
                 <img src=${character.image} />
@@ -58,13 +58,16 @@ function bindNextPageButton() {
 }
 
 function prevPage() {
-    console.log('url: ', dataStore.info.prev)
     getCharacterDataFromAPI(dataStore.info.prev)
     htmlBody.innerHTML = ''
 }
 
 function nextPage() {
-    console.log('url: ', dataStore.info.next)
+    if (currentPageNumber === 0) {
+        currentPageNumber = 2
+    } else {
+        currentPageNumber++
+    }
     getCharacterDataFromAPI(dataStore.info.next)
     htmlBody.innerHTML = ''
 }
