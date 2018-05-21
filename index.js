@@ -70,7 +70,7 @@ function nextPage() {
 function setup() {
     bindPrevPageButton()
     bindNextPageButton()
-    getCharacterDataFromAPI(RICK_AND_MORTY_BASE_URL)
+    getCharacterDataFromAPI(RICK_AND_MORTY_CHARACTER_URL)
 }
 
 setup()
