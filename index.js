@@ -4,6 +4,7 @@ const RICK_AND_MORTY_CHARACTER_URL = 'https://rickandmortyapi.com/api/character'
 let dataStore
 let characters
 let currentPageNumber
+const htmlBody = document.getElementById('content')
 let prevButton = document.getElementById('previous')
 let nextButton = document.getElementById('next')
 
@@ -36,7 +37,6 @@ function handleData() {
 }
 
 function renderData(data) {
-    const htmlBody = document.getElementById('content')
     return characters.map(character => {
         htmlBody.innerHTML += 
             `<div>
@@ -60,11 +60,13 @@ function bindNextPageButton() {
 function prevPage() {
     console.log('url: ', dataStore.info.prev)
     getCharacterDataFromAPI(dataStore.info.prev)
+    htmlBody.innerHTML = ''
 }
 
 function nextPage() {
     console.log('url: ', dataStore.info.next)
     getCharacterDataFromAPI(dataStore.info.next)
+    htmlBody.innerHTML = ''
 }
 
 function setup() {
