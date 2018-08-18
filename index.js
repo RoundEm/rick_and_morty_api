@@ -1,12 +1,12 @@
 'use strict'
 
 const RICK_AND_MORTY_CHARACTER_URL = 'https://rickandmortyapi.com/api/character'
-let dataStore
-let characters
-let currentPageNumber = 0
-const htmlBody = document.getElementById('content')
-let prevButton = document.getElementById('previous')
-let nextButton = document.getElementById('next')
+const dataStore,
+    characters,
+    currentPageNumber = 0,
+    htmlBody = document.getElementById('content'),
+    prevButton = document.getElementById('previous'),
+    nextButton = document.getElementById('next')
 
 function getCharacterDataFromAPI(URL) {
     fetch(URL)
